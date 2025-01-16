@@ -22,17 +22,21 @@ pipeline {
 
       stage('Build') {
             steps {
-                sh 'java -version' // Verify Java version
-                sh 'mvn -version'  // Verify Maven version being used
-                sh 'mvn clean package' // Run your Maven build
+                sh 'mvn clean compile' // Remove the target directory and compile the code
             }
       }
 
       stage('Test') {
          steps {
                script {
-                  sh 'mvn test'
+                  sh 'mvn test' // Run the tests
                }
+         }
+      }
+
+      stage('Package') {
+         steps {
+               sh 'mvn package' // Package the project (produces .jar or .war)
          }
       }
 
