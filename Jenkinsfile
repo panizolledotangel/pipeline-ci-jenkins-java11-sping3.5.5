@@ -4,6 +4,7 @@ pipeline {
 
    tools {
       jdk 'jdk_11' // Use the name you configured for JDK 11 in the Jenkins tools configuration
+      mvn 'maven'
    }
 
    stages {
