@@ -4,6 +4,7 @@ pipeline {
 
    tools {
       jdk 'jdk_11' // Use the name you configured for JDK 11 in the Jenkins tools configuration
+      maven 'maven'
    }
 
    stages {
@@ -19,6 +20,13 @@ pipeline {
                ])
          }
       }
+      
+      stage('Verify JDK') {
+            steps {
+                sh 'echo "JAVA_HOME is set to $JAVA_HOME"' // Verifica el valor de JAVA_HOME
+                sh '$JAVA_HOME/bin/java --version' // Verifica la versión de Java directamente
+            }
+        }
 
       stage('Build') {
             steps {
