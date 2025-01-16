@@ -20,25 +20,31 @@ pipeline {
                ])
          }
       }
+      
+      stage('Verify JDK') {
+            steps {
+                sh 'echo "JAVA_HOME is set to $JAVA_HOME"' // Verifica el valor de JAVA_HOME
+                sh '$JAVA_HOME/bin/java --version' // Verifica la versión de Java directamente
+            }
+        }
 
       stage('Build') {
             steps {
-                sh 'java --version'
-                sh 'maven clean compile' // Remove the target directory and compile the code
+                sh 'mvn clean compile' // Remove the target directory and compile the code
             }
       }
 
       stage('Test') {
          steps {
                script {
-                  sh 'maven test' // Run the tests
+                  sh 'mvn test' // Run the tests
                }
          }
       }
 
       stage('Package') {
          steps {
-               sh 'maven package' // Package the project (produces .jar or .war)
+               sh 'mvn package' // Package the project (produces .jar or .war)
          }
       }
 
