@@ -23,6 +23,7 @@ pipeline {
 
       stage('Build') {
             steps {
+                sh 'java --version'
                 sh 'maven clean compile' // Remove the target directory and compile the code
             }
       }
