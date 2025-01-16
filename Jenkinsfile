@@ -23,21 +23,21 @@ pipeline {
 
       stage('Build') {
             steps {
-                sh 'mvn clean compile' // Remove the target directory and compile the code
+                sh 'maven clean compile' // Remove the target directory and compile the code
             }
       }
 
       stage('Test') {
          steps {
                script {
-                  sh 'mvn test' // Run the tests
+                  sh 'maven test' // Run the tests
                }
          }
       }
 
       stage('Package') {
          steps {
-               sh 'mvn package' // Package the project (produces .jar or .war)
+               sh 'maven package' // Package the project (produces .jar or .war)
          }
       }
 
