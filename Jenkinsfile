@@ -36,13 +36,10 @@ pipeline {
          }
       }
 
-      post {
-         always {
-            // Archive the build artifacts
+      stage('Archive Artifacts') {
+         steps {
+            // Archive the generated artifacts
             archiveArtifacts artifacts: 'target/*.jar, target/*.war', allowEmptyArchive: true
-
-            // Clean up build directory after the build
-            deleteDir()
          }
       }
    }
