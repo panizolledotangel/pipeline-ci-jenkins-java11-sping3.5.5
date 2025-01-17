@@ -20,13 +20,6 @@ pipeline {
                ])
          }
       }
-      
-      stage('Verify JDK') {
-            steps {
-                sh 'echo "JAVA_HOME is set to $JAVA_HOME"' // Verifica el valor de JAVA_HOME
-                sh '$JAVA_HOME/bin/java --version' // Verifica la versión de Java directamente
-            }
-        }
 
       stage('Build') {
             steps {
